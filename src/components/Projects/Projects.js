@@ -4,7 +4,7 @@ import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
 import Random from "../../Assets/Projects/passwordpic.png";
 import Kanban from "../../Assets/Projects/Kanban.png";
-import Whiteboard from "/Users/user/Desktop/Portfolio-main/src/Assets/whiteboard.png"; // Reused image
+import Whiteboard from "../../../src/Assets/whiteboard.png"; // Reused image
 
 function Projects() {
   return (
