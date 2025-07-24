@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import logo from "../Assets/logo.jpeg";
 import { CgGitFork, CgFileDocument } from "react-icons/cg";
 import {
@@ -32,11 +31,12 @@ function NavBar() {
         backgroundColor: navColour ? "#222" : "transparent",
         transition: "background 0.3s ease-in-out",
         padding: "10px 0",
+        zIndex: 9999,
       }}
     >
       <Container>
         {/* Brand Logo */}
-        <Navbar.Brand href="/" className="d-flex align-items-center">
+        <Navbar.Brand href="#home" className="d-flex align-items-center">
           <img
             src={logo}
             alt="brand"
@@ -59,25 +59,23 @@ function NavBar() {
           />
         </Navbar.Brand>
 
-        {/* Navbar Toggle */}
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
           onClick={() => updateExpanded(!expand)}
         />
 
-        {/* Navbar Links */}
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
             {[
-              { to: "/", label: "Home", icon: <AiOutlineHome /> },
-              { to: "/about", label: "About", icon: <AiOutlineUser /> },
-              { to: "/project", label: "Projects", icon: <AiOutlineFundProjectionScreen /> },
-              { to: "/resume", label: "Resume", icon: <CgFileDocument /> },
+              { href: "#home", label: "Home", icon: <AiOutlineHome /> },
+              { href: "#about", label: "About", icon: <AiOutlineUser /> },
+              { href: "#projects", label: "Projects", icon: <AiOutlineFundProjectionScreen /> },
+              { href: "#resume", label: "Resume", icon: <CgFileDocument /> },
             ].map((item, index) => (
               <Nav.Item key={index}>
                 <Nav.Link
-                  as={Link}
-                  to={item.to}
+                  as="a"
+                  href={item.href}
                   onClick={() => updateExpanded(false)}
                   style={{
                     display: "flex",
@@ -94,7 +92,6 @@ function NavBar() {
                   onMouseOut={(e) => (e.target.style.color = "white")}
                 >
                   {item.icon} {item.label}
-                  {/* Hover underline effect */}
                   <span
                     style={{
                       position: "absolute",
@@ -111,7 +108,7 @@ function NavBar() {
               </Nav.Item>
             ))}
 
-            {/* GitHub Fork Button with Bottom Hover Effect */}
+            {/* GitHub Button */}
             <Nav.Item>
               <Button
                 href="https://github.com/Adi-222"
@@ -144,7 +141,6 @@ function NavBar() {
               >
                 <CgGitFork />
                 <AiFillStar />
-                {/* Bottom underline animation */}
                 <span
                   className="button-hover-line"
                   style={{
